@@ -9,7 +9,7 @@ export const fetchCountries = createAsyncThunk(
 ) 
         export const fetchCountryData = createAsyncThunk(
             'covidData/fetchCountryData',async(selectedCountry)=>{
-             const res =  await axios.get(`https://api.covid19api.com/total/dayone/country/${selectedCountry}`)
+             const res =  await axios.get(`https://api.covid19api.com/country/${selectedCountry} `)
               return res.data[res.data.length -1]
             }
         )
@@ -17,14 +17,14 @@ export const fetchCountries = createAsyncThunk(
 export const covidDataSlice = createSlice({
     name: 'covidData',
     initialState: {
-        countries: null,
-        country:null,
-        countryData: null,
+        selectedCountry:null,
+        countries: [],
+        countryData: "",
         status: "idle",
     },
     reducers:{
-        selectCountry:(state,action)=>{
-            state.country = action.payload;
+        setSelectCountry:(state,action)=>{
+            state.selectedCountry = action.payload;
         }
     },
     extraReducers:(builder) => {
@@ -40,10 +40,10 @@ export const covidDataSlice = createSlice({
                 state.status = "loading"
         })
             .addCase(fetchCountryData.fulfilled, (state, action) => {
-                state.countries = action.payload;
+                state.countryData = action.payload;
                 state.status = "succeed"
         })
     }
 })
-export const {selectCountry} = covidDataSlice.actions
+export const {setSelectCountry} = covidDataSlice.actions
 export default covidDataSlice.reducer

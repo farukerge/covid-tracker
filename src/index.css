@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+    @layer components {
+        .Infected {
+            @apply max-w-sm p-6 bg-infectedPrimary rounded-lg  border-4 border-b-infectedSecondary
+        }
+        .Active {
+            @apply max-w-sm p-6 bg-activePrimary rounded-lg  border-4 border-b-activeSecondary
+        }
+        .Deaths {
+            @apply max-w-sm p-6 bg-deathsPrimary rounded-lg border-4 border-b-deathsSecondary
+        }
+        .Recovered {
+            @apply max-w-sm p-6 bg-recoveredPrimary rounded-lg border-4 border-b-recoveredSecondary
+        }
+    }

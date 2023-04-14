@@ -1,12 +1,11 @@
-import { useState } from 'react'
-import Layout from '../src/layout/index'
+import Homepage from './pages/Homepage/Homepage'
 
 function App() {
 
   return (
-    <div className="App">
-      <Layout />
-    </div>
+    <>
+      <Homepage />
+    </>
   )
 }
 
